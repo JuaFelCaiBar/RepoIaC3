@@ -1,0 +1,25 @@
+name: "PROD DEPLOY"
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+# pasos que se deben ejecutar
+jobs:
+  terraform:
+    # usamos el archivo creado en el paso anterior
+    uses: ./.github/workflows/terraform.yml
+    with:
+      # pasamos todas las variables que configuramos en el archivo terraform.yml
+      environment: prod
+      # remplazar por el ARN del rol que se creo en la actividad 1
+      aws-assume-role-arn: "arn:aws:iam::992382835450:role/rol_profesor"
+      aws-region: "us-east-1"
+      # remplazar por el nombre del s3 que se creo en la actividad 2
+      aws-statefile-s3-bucket: "almacenamietoiaclab"
+      # remplazar por el nombre de la BD dynamo que se creo para los objetos lock
+      aws-lock-dynamodb-table: "tabaltestiacclase"
