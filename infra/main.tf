@@ -1,7 +1,3 @@
-provider "aws" {
-  region = "us-east-1"
-}
-
 # Crear la VPC
 resource "aws_vpc" "my_vpc" {
   cidr_block = "10.0.0.0/22"  # VPC CIDR Block que abarca los tres grupos
