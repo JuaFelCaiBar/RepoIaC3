@@ -133,7 +133,6 @@ resource "aws_instance" "my_instance" {
   ami           = "ami-05b1a50d6798f63cb"  # Reemplaza con el ID de la AMI (por ejemplo, Amazon Linux 2)
   instance_type = "t3.micro"               # Tipo de instancia (puedes cambiarlo según tus necesidades)
   subnet_id     = aws_subnet.public_subnet_1.id
-  security_group = aws_security_group.my_security_group.id
 
   # Asociar una IP pública
   associate_public_ip_address = true
